@@ -22,6 +22,15 @@ app.get('/', (req, res) => {
 app.use("/", teamsRoutes);
 app.use("/api", apiRoutes);
 
+app.use((err, req, res, next) => {
+    console.error(err);
+
+    res.status(500).render('pages/500', {
+        title: 'Server Error',
+        message: 'Something went wrong'
+    });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

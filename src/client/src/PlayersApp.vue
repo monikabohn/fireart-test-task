@@ -44,7 +44,7 @@ const loadPlayers = async () => {
     const res = await fetch(`/api/teams/${props.teamId}/players`);
 
     if (!res.ok) {
-      throw new Error("API error");
+      throw new Error(`Request failed with status ${res.status}`);
     }
 
     const data = await res.json();
