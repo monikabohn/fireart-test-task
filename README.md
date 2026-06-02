@@ -24,6 +24,15 @@ public/       → built frontend assets (Vite output)
 - npm 10+
 - Internet access (calls `thesportsdb.com` at runtime)
 
+## Node version setup
+
+If you use `nvm`:
+
+```bash
+nvm install 20
+nvm use 20
+````
+
 ## Install
 
 Two `package.json` files on purpose — install both:
@@ -31,6 +40,13 @@ Two `package.json` files on purpose — install both:
 ```bash
 npm install
 npm install --prefix src/client
+```
+
+## Build (prod)
+
+```bash
+npm run build --prefix src/client   # outputs to /public/assets
+node src/server/app.js              # serves the built bundle
 ```
 
 ## Run (dev)
@@ -46,12 +62,6 @@ Two terminals:
    cd src/client && npm run dev
    ```
 
-## Build (prod)
-
-```bash
-npm run build --prefix src/client   # outputs to /public/assets
-node src/server/app.js              # serves the built bundle
-```
 
 ## Routes
 
