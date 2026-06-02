@@ -10,29 +10,11 @@
     <div v-if="players.length"
          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
-      <a v-for="player in players"
-         :key="player.idPlayer"
-         :href="`/players/${player.idPlayer}`"
-         class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col items-center text-center"
-      >
-        <img v-if="player.strThumb"
-             :src="player.strThumb"
-             alt="Player photo"
-             class="w-20 h-20 rounded-full object-cover mb-3 border border-gray-200"
-        />
-
-        <h3 class="font-semibold text-gray-900 text-sm mb-2">
-          {{ player.strPlayer }}
-        </h3>
-
-        <p class="text-xs text-gray-500">
-          {{ player.strPosition }}
-        </p>
-
-        <p class="text-xs text-gray-500">
-          {{ player.strNationality }}
-        </p>
-      </a>
+      <PlayerCard
+          v-for="player in players"
+          :key="player.idPlayer"
+          :player="player"
+      />
     </div>
 
     <div v-else-if="!loading">No players found</div>
@@ -41,6 +23,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import PlayerCard from "./components/PlayerCard.vue";
 
 const props = defineProps({
   teamId: String,
