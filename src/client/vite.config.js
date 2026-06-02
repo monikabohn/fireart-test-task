@@ -10,9 +10,8 @@ export default defineConfig({
     plugins: [vue(), tailwindcss()],
 
     build: {
-        outDir: path.resolve(__dirname, '../../public'),
+        outDir: path.resolve(__dirname, '../../public/assets'),
         emptyOutDir: true,
-        assetsDir: 'assets',
         manifest: true,
 
         rollupOptions: {

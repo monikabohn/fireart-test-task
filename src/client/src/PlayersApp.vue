@@ -65,7 +65,7 @@ const loadPlayers = async () => {
     }
 
     const data = await res.json();
-    players.value = data.player || [];
+    players.value = data || [];
   } catch (err) {
     error.value = "Failed to load players";
   } finally {

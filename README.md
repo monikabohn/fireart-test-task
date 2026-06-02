@@ -20,7 +20,8 @@ public/       → built frontend assets (Vite output)
 
 ## Requirements
 
-- Node.js ≥ 20, npm ≥ 10
+- **Node.js 20+ (required)**
+- npm 10+
 - Internet access (calls `thesportsdb.com` at runtime)
 
 ## Install
@@ -48,8 +49,8 @@ Two terminals:
 ## Build (prod)
 
 ```bash
-cd src/client && npm run build    # outputs to /public/assets
-node src/server/app.js            # serves the built bundle
+npm run build --prefix src/client   # outputs to /public/assets
+node src/server/app.js              # serves the built bundle
 ```
 
 ## Routes
