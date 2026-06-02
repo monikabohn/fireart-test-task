@@ -13,11 +13,11 @@
     </h3>
 
     <p class="text-xs text-gray-500">
-      {{ player.strPosition }}
+      {{ player.strPosition || 'Unknown position' }}
     </p>
 
     <p class="text-xs text-gray-500">
-      {{ player.strNationality }}
+      {{ player.strNationality || 'Unknown position' }}
     </p>
   </a>
 </template>

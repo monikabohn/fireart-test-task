@@ -8,22 +8,22 @@
       <div class="space-y-3 text-sm">
         <div class="flex justify-between">
           <span class="text-gray-500">Sport</span>
-          <span class="text-gray-900"><%= team.strSport %></span>
+          <span class="text-gray-900"><%= team.strSport || 'Unknown' %></span>
         </div>
 
         <div class="flex justify-between">
           <span class="text-gray-500">League</span>
-          <span class="text-gray-900"><%= team.strLeague %></span>
+          <span class="text-gray-900"><%= team.strLeague || 'Unknown' %></span>
         </div>
 
         <div class="flex justify-between">
           <span class="text-gray-500">Country</span>
-          <span class="text-gray-900"><%= team.strCountry %></span>
+          <span class="text-gray-900"><%= team.strCountry || 'Unknown'  %></span>
         </div>
 
         <div class="flex justify-between">
           <span class="text-gray-500">Founded</span>
-          <span class="text-gray-900"><%= team.intFormedYear %></span>
+          <span class="text-gray-900"><%= team.intFormedYear || 'Unknown' %></span>
         </div>
 
       </div>
