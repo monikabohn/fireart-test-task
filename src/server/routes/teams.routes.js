@@ -34,11 +34,7 @@ router.get('/teams/:id', async (req, res, next) => {
             getPlayersByTeamId(id),
         ]);
 
-        if (!team) {
-            return res.status(404).render('pages/404',
-            { message: 'Team not found' }
-            );
-        }
+        if (!team) return next();
 
         res.render("pages/team", {
             title: team.strTeam,
@@ -59,11 +55,7 @@ router.get("/players/:id", async (req, res, next) => {
         const { id } = req.params;
         const player = await getPlayerById(id);
 
-        if (!player) {
-            return res.status(404).render('pages/404',
-            { message: 'Player not found' }
-            );
-        }
+        if (!player) return next();
 
         res.render("pages/player", {
             title: player.strPlayer,

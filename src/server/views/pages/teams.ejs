@@ -10,7 +10,7 @@
     <li>
       <a href="/teams/<%= team.idTeam %>"
          class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col items-center">
-          <img src="<%= team.strBadge %>"
+          <img src="<%= team.strBadge || '/images/team-placeholder.svg' %>"
                class="w-20 h-20 object-contain mb-3"
           />
           <h3 class="font-semibold text-sm text-center">

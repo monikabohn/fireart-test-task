@@ -5,7 +5,7 @@
     <div class="grid md:grid-cols-3 gap-8">
         <div>
             <% if (player.strThumb) { %>
-                <img src="<%= player.strThumb %>"
+                <img src="<%= player.strThumb ||  '/images/player-placeholder.svg' %>"
                      alt="<%= player.strPlayer %>"
                      class="w-full rounded-xl object-cover"
                 />

@@ -22,13 +22,25 @@ app.get('/', (req, res) => {
 app.use("/", teamsRoutes);
 app.use("/api", apiRoutes);
 
+app.use((req, res) => {
+    if (req.accepts('html')) {
+        return res.status(404).render('errors/404', {
+            title: 'Page not found'
+        });
+    }
+    res.status(404).json({ error: 'Not found' });
+});
+
 app.use((err, req, res, next) => {
     console.error(err);
 
-    res.status(500).render('pages/500', {
-        title: 'Server Error',
-        message: 'Something went wrong'
-    });
+    if (req.accepts('html')) {
+        return res.status(500).render('errors/500', {
+            title: 'Server Error',
+            message: 'Something went wrong'
+        });
+    }
+    res.status(500).json({ error: 'Internal Server Error' });
 });
 
 const PORT = process.env.PORT || 3000;

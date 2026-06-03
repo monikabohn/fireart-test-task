@@ -3,7 +3,7 @@
      class="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col items-center text-center"
   >
     <img v-if="player.strThumb"
-         :src="player.strThumb"
+         :src="player.strThumb || 'images/player-placeholder.svg'"
          alt="Player photo"
          class="w-20 h-20 rounded-full object-cover mb-3 border border-gray-200"
     />

@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, onBeforeUnmount } from "vue";
 import PlayerCard from "./components/PlayerCard.vue";
 
 const props = defineProps({
@@ -34,25 +34,37 @@ const players = ref([]);
 const loading = ref(false);
 const error = ref(null);
 
+let controller = null;
+
 const loadPlayers = async () => {
   if (!props.teamId) return;
+
+  controller?.abort();
+  controller = new AbortController();
 
   loading.value = true;
   error.value = null;
 
   try {
-    const res = await fetch(`/api/teams/${props.teamId}/players`);
-
+    const res = await fetch(`/api/teams/${props.teamId}/players`,
+        { signal: controller.signal }
+    );
     if (!res.ok) {
       throw new Error(`Request failed with status ${res.status}`);
     }
-
     const data = await res.json();
     players.value = data || [];
+
   } catch (err) {
+    if (err.name === "AbortError") return;
+    console.error(err);
     error.value = "Failed to load players";
+    players.value = [];
+
   } finally {
-    loading.value = false;
+    if (!controller.signal.aborted) {
+      loading.value = false;
+    }
   }
 };
 
@@ -63,4 +75,6 @@ watch(
     },
     { immediate: true }
 );
+
+onBeforeUnmount(() => controller?.abort());
 </script>
