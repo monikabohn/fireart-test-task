@@ -1,6 +1,6 @@
 # Fireart Test Task
 
-Small full‑stack app for browsing **English Premier League** teams and players, powered by the public [TheSportsDB](https://www.thesportsdb.com/free_api)
+Small full‑stack app for browsing **English Premier League** teams and players, powered by the public [TheSportsDB](https://www.thesportsdb.com/free_sports_api)
 
 ## Architecture
 
